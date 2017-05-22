@@ -3,9 +3,22 @@
 # External dependencies
 #
 
-find_package(Qt5Core 5.5 REQUIRED)
-find_package(Qt5Gui 5.5 REQUIRED)
+find_package(Qt5 5.5 COMPONENTS Core Gui REQUIRED)
 
+#
+# Platform-Specific Configuration
+#
+if (WIN32)
+    # Nothing yet
+elseif(APPLE)
+    # Nothing yet
+elseif(UNIX AND NOT APPLE)
+    find_package(X11 REQUIRED)
+
+    set(platform_link_libraries
+        ${X11_LIBRARIES}
+    )
+endif()
 # TODO: Add x11 dependencies for Linux
 
 #
@@ -17,6 +30,12 @@ set(target Keysender)
 
 # Exit here if required dependencies are not met
 message(STATUS "Lib ${target}")
+
+if (UNIX AND NOT APPLE)
+  if (NOT X11_FOUND)
+    message(STATUS "Uh oh")
+  endif()
+endif()
 
 # Set API export file and macro
 string(TOUPPER ${target} target_upper)
@@ -36,6 +55,9 @@ set(headers
     ${include_path}/Keysender.hpp
 )
 
+#
+# Platform-Specific Configuration
+#
 if (WIN32)
     set(platform_sources
         ${source_path}/Keysender-windows.cpp
@@ -46,7 +68,7 @@ elseif(APPLE)
   )
 elseif(UNIX)
     set(platform_sources
-      ${source_path}/Keysender-linux.cpp
+        ${source_path}/Keysender-linux.cpp
     )
 endif()
 
@@ -148,7 +170,9 @@ target_link_libraries(${target}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
-
+    ${platform_link_libraries}
+    Qt5::Core
+    Qt5::Gui
     INTERFACE
 )
 

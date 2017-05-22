@@ -3,9 +3,7 @@
 # External dependencies
 #
 
-find_package(Qt5Core    5.1)
-find_package(Qt5Gui     5.1)
-find_package(Qt5Widgets 5.1)
+find_package(Qt5 5.5 COMPONENTS Core Gui REQUIRED)
 
 # Enable automoc
 set(CMAKE_AUTOMOC ON)
@@ -86,10 +84,9 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
+    ${META_PROJECT_NAME}::Keysender
     Qt5::Core
     Qt5::Gui
-    Qt5::Widgets
-    ${META_PROJECT_NAME}::Keysender
 )
 
 

@@ -4,7 +4,7 @@
 #include <QtDebug>
 #include <QKeyEvent>
 
-#include "Keysender.hpp"
+#include "Keysender/Keysender.hpp"
 
 int main(int argc, char *argv[])
 {

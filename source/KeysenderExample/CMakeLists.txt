@@ -1,7 +1,7 @@
 
-# 
+#
 # External dependencies
-# 
+#
 
 find_package(Qt5Core    5.1)
 find_package(Qt5Gui     5.1)
@@ -17,12 +17,12 @@ set_property(GLOBAL PROPERTY AUTOMOC_FOLDER CMakeAutomocTargets)
 set_policy(CMP0020 NEW)
 
 
-# 
+#
 # Executable name and options
-# 
+#
 
 # Target name
-set(target fibgui)
+set(target KeysenderExample)
 
 # Exit here if required dependencies are not met
 if (NOT Qt5Core_FOUND)
@@ -33,21 +33,18 @@ else()
 endif()
 
 
-# 
+#
 # Sources
-# 
+#
 
 set(sources
     main.cpp
-    MainWindow.cpp
-    MainWindow.h
-    MainWindow.ui
 )
 
 
-# 
+#
 # Create executable
-# 
+#
 
 # Build executable
 add_executable(${target}
@@ -59,9 +56,9 @@ add_executable(${target}
 add_executable(${META_PROJECT_NAME}::${target} ALIAS ${target})
 
 
-# 
+#
 # Project options
-# 
+#
 
 set_target_properties(${target}
     PROPERTIES
@@ -70,9 +67,9 @@ set_target_properties(${target}
 )
 
 
-# 
+#
 # Include directories
-# 
+#
 
 target_include_directories(${target}
     PRIVATE
@@ -82,9 +79,9 @@ target_include_directories(${target}
 )
 
 
-# 
+#
 # Libraries
-# 
+#
 
 target_link_libraries(${target}
     PRIVATE
@@ -92,14 +89,13 @@ target_link_libraries(${target}
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
-    ${META_PROJECT_NAME}::baselib
-    ${META_PROJECT_NAME}::fiblib
+    ${META_PROJECT_NAME}::Keysender
 )
 
 
-# 
+#
 # Compile definitions
-# 
+#
 
 target_compile_definitions(${target}
     PRIVATE
@@ -107,9 +103,9 @@ target_compile_definitions(${target}
 )
 
 
-# 
+#
 # Compile options
-# 
+#
 
 target_compile_options(${target}
     PRIVATE
@@ -117,9 +113,9 @@ target_compile_options(${target}
 )
 
 
-# 
+#
 # Linker options
-# 
+#
 
 target_link_libraries(${target}
     PRIVATE
@@ -127,9 +123,9 @@ target_link_libraries(${target}
 )
 
 
-# 
+#
 # Deployment
-# 
+#
 
 # Executable
 install(TARGETS ${target}

@@ -1,7 +1,7 @@
 
-# 
+#
 # CMake options
-# 
+#
 
 # CMake version
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
@@ -27,31 +27,31 @@ set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
 set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
 
 
-# 
+#
 # Project description and (meta) information
-# 
+#
 
 # Get git revision
 get_git_head_revision(GIT_REFSPEC GIT_SHA1)
 string(SUBSTRING "${GIT_SHA1}" 0 12 GIT_REV)
 
 # Meta information about the project
-set(META_PROJECT_NAME        "template")
+set(META_PROJECT_NAME        "Keysender")
 set(META_PROJECT_DESCRIPTION "CMake Project Template")
-set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
-set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/cmake-init/")
-set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
-set(META_VERSION_MAJOR       "2")
-set(META_VERSION_MINOR       "0")
+set(META_AUTHOR_ORGANIZATION "")
+set(META_AUTHOR_DOMAIN       "https://jessetg.github.io")
+set(META_AUTHOR_MAINTAINER   "jessetalavera@aol.com")
+set(META_VERSION_MAJOR       "0")
+set(META_VERSION_MINOR       "1")
 set(META_VERSION_PATCH       "0")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
 
 
-# 
+#
 # Project configuration options
-# 
+#
 
 # Project options
 option(BUILD_SHARED_LIBS     "Build shared instead of static libraries."              ON)
@@ -61,13 +61,13 @@ option(OPTION_BUILD_DOCS     "Build documentation."                             
 option(OPTION_BUILD_EXAMPLES "Build examples."                                        OFF)
 
 
-# 
+#
 # Declare project
-# 
+#
 
 # Generate folders for IDE targets (e.g., VisualStudio solutions)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-set(IDE_FOLDER "")  
+set(IDE_FOLDER "")
 
 # Declare project
 project(${META_PROJECT_NAME} C CXX)
@@ -81,16 +81,16 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 file(WRITE "${PROJECT_BINARY_DIR}/VERSION" "${META_NAME_VERSION}")
 
 
-# 
+#
 # Compiler settings and options
-# 
+#
 
 include(cmake/CompileOptions.cmake)
 
 
-# 
+#
 # Deployment/installation setup
-# 
+#
 
 # Get project name
 set(project ${META_PROJECT_NAME})
@@ -142,23 +142,23 @@ if(NOT SYSTEM_DIR_INSTALL)
     if(APPLE)
         set(CMAKE_INSTALL_RPATH "@loader_path/../../../${INSTALL_LIB}")
     else()
-        set(CMAKE_INSTALL_RPATH "$ORIGIN/${INSTALL_LIB}")       
+        set(CMAKE_INSTALL_RPATH "$ORIGIN/${INSTALL_LIB}")
     endif()
 endif()
 
 
-# 
+#
 # Project modules
-# 
+#
 
 add_subdirectory(source)
 add_subdirectory(docs)
 add_subdirectory(deploy)
 
 
-# 
+#
 # Deployment (global project files)
-# 
+#
 
 # Install version file
 install(FILES "${PROJECT_BINARY_DIR}/VERSION" DESTINATION ${INSTALL_ROOT} COMPONENT runtime)

@@ -1,4 +1,4 @@
-#include "Keysender.hpp"
+#include "Keysender/Keysender.hpp"
 
 #include <QEvent>
 #include <QInputEvent>

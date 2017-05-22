@@ -1,4 +1,4 @@
-#include "Keysender.hpp"
+#include "Keysender/Keysender.hpp"
 
 #ifdef Q_OS_LINUX
 #include <QtDebug>

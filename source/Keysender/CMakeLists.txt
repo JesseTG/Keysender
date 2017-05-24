@@ -55,26 +55,11 @@ set(headers
     ${include_path}/Keysender.hpp
 )
 
-#
-# Platform-Specific Configuration
-#
-if (WIN32)
-    set(platform_sources
-        ${source_path}/Keysender-windows.cpp
-    )
-elseif(APPLE)
-  set(platform_sources
-        ${source_path}/Keysender-macos.cpp
-  )
-elseif(UNIX)
-    set(platform_sources
-        ${source_path}/Keysender-linux.cpp
-    )
-endif()
-
 set(sources
     ${source_path}/Keysender-common.cpp
-    ${platform_sources}
+    ${source_path}/Keysender-windows.cpp
+    ${source_path}/Keysender-macos.cpp
+    ${source_path}/Keysender-linux.cpp
 )
 
 # Group source files

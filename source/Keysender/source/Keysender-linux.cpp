@@ -392,6 +392,4 @@ unsigned int qtKeyToNativeKey(unsigned int qtKey) {
 };
 
 }
-#else
-#error "Keysender-linux.cpp can only be built on Linux"
 #endif

@@ -35,6 +35,4 @@ bool Keysender::shortcutEvent(const QShortcutEvent& event) {
 }
 
 }
-#else
-#error "Keysender-macos.cpp can only be built on macOS"
 #endif

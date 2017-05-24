@@ -210,6 +210,4 @@ QPair<uint8_t, CommandType> Keysender::qtKeyToNativeKey(unsigned int qtKey) {
 }
 
 }
-#else
-#error "Keysender-windows.cpp can only be built on Windows"
 #endif

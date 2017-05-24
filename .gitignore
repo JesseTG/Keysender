@@ -27,6 +27,7 @@ CMakeLists.txt.user.*
 # IDE project files
 *.sublime-project
 *.sublime-workspace
+*.cbp
 
 # Local config windows
 _configure.bat
@@ -36,3 +37,14 @@ _start-cmd.bat
 
 # Local config unix
 .localconfig
+
+# CMake
+CMakeFiles
+CMakeCache.txt
+
+Makefile
+*.cmake
+*_features.h
+*_api.h
+*-version.h
+VERSION

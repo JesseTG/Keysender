@@ -6,12 +6,21 @@
 #include <QKeyEvent>
 #include <QMouseEvent>
 
+#include "Keysender/Keysender_api.h"
+
 #ifdef Q_OS_LINUX
 struct _XDisplay;
 #endif
 
-namespace wiirdo {
-class Keysender : public QObject
+#ifdef Keysender_EXPORTS
+#  define KEYSENDER_EXPORT Q_DECL_EXPORT
+#else
+#  define KEYSENDER_EXPORT Q_DECL_IMPORT
+#endif
+
+
+namespace keysender {
+class KEYSENDER_EXPORT Keysender : public QObject
 {
   Q_OBJECT
 

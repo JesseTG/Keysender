@@ -8,7 +8,7 @@
 
 // Implement any Keysender methods that are platform-agnostic here
 
-namespace wiirdo {
+namespace keysender {
 
 bool Keysender::send(const QEvent& event) {
   switch (event.type()) {

@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     parser.showHelp(1);
   }
 
-  wiirdo::Keysender keysender;
+  keysender::Keysender keysender;
 
 
   for (const QString& s : sequences) {

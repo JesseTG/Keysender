@@ -7,11 +7,12 @@
 #include <X11/XF86keysym.h>
 #include <X11/extensions/XTest.h>
 
-// regex: (?!\/\/)((?>X[KF]|0x)[\w\d_]+),\s*(Qt::[\w\d_]+),
-namespace wiirdo {
 
-unsigned int qtKeyToNativeKey(unsigned int qtKey);
-bool keyEvent(Display* x11, Qt::Key key, Qt::KeyboardModifiers modifiers, bool down);
+// regex: (?!\/\/)((?>X[KF]|0x)[\w\d_]+),\s*(Qt::[\w\d_]+),
+namespace keysender {
+
+static unsigned int qtKeyToNativeKey(unsigned int qtKey);
+static bool keyEvent(Display* x11, Qt::Key key, Qt::KeyboardModifiers modifiers, bool down);
 
 Keysender::Keysender(QObject *parent) : QObject(parent), x11(XOpenDisplay(nullptr))
 {

@@ -390,7 +390,7 @@ unsigned int qtKeyToNativeKey(unsigned int qtKey) {
   case Qt::Key_LaunchH: return XF86XK_LaunchF;
   default: return qtKey; // XK_VoidSymbol
 }
-};
+}
 
 }
 #endif

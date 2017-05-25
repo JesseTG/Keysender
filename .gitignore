@@ -49,3 +49,5 @@ Makefile
 *-version.h
 VERSION
 compile_commands.json
+moc_*.cpp
+KeysenderExample

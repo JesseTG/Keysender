@@ -23,6 +23,9 @@ set(DEFAULT_PROJECT_OPTIONS
     LINKER_LANGUAGE           "CXX"
     POSITION_INDEPENDENT_CODE ON
     CXX_VISIBILITY_PRESET     "hidden"
+    CMAKE_AUTOMOC             ON
+    CMAKE_AUTOUIC             ON
+    CMAKE_AUTORCC             ON
 )
 
 

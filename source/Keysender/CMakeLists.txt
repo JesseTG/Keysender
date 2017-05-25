@@ -5,6 +5,13 @@
 
 find_package(Qt5 5.5 COMPONENTS Core Gui REQUIRED)
 
+
+# Enable automoc
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(AUTOMOC_MOC_OPTIONS PROPERTIES FOLDER CMakeAutomocTargets)
+set_property(GLOBAL PROPERTY AUTOMOC_FOLDER CMakeAutomocTargets)
+
 #
 # Platform-Specific Configuration
 #
@@ -17,13 +24,9 @@ elseif(UNIX AND NOT APPLE)
 
     set(platform_link_libraries
         ${X11_LIBRARIES}
+        ${X11_XTest_LIB}
     )
 endif()
-# TODO: Add x11 dependencies for Linux
-
-#
-# Library name and options
-#
 
 # Target name
 set(target Keysender)
@@ -42,7 +45,6 @@ string(TOUPPER ${target} target_upper)
 set(feature_file "include/${target}/${target}_features.h")
 set(export_file  "include/${target}/${target}_api.h")
 set(export_macro "${target_upper}_API")
-
 
 #
 # Sources

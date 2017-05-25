@@ -48,3 +48,4 @@ Makefile
 *_api.h
 *-version.h
 VERSION
+compile_commands.json

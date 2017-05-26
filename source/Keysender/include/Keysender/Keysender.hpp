@@ -41,7 +41,9 @@ public slots:
   bool shortcutEvent(const QShortcutEvent& event);
   bool mouseEvent(const QMouseEvent& event);
   bool wheelEvent(const QWheelEvent& event);
-private:
+private /* members */:
+  // This big array only exists because Qt doesn't declare Qt::Key as a Q_ENUM
+  static std::array<Qt::Key, 439> QT_KEYS;
 #ifdef Q_OS_LINUX
   _XDisplay* x11;
 #endif

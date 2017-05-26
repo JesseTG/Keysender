@@ -17,6 +17,15 @@ static bool keyEvent(Display* x11, Qt::Key key, Qt::KeyboardModifiers modifiers,
 Keysender::Keysender(QObject *parent) : QObject(parent), x11(XOpenDisplay(nullptr))
 {
   // XTestFakeKeyEvent(x11, 0, 0, 0); TODO: Do a proper test and throw if it fails
+  for (const Qt::Key key : QT_KEYS) {
+    // For each Qt key code...
+    KeyCode code = XKeysymToKeycode(x11, qtKeyToNativeKey(key));
+
+    if (code != 0) {
+      // If the underlying key code is currently available...
+      this->_supportedKeys.insert(key);
+    }
+  }
 }
 
 Keysender::~Keysender() {

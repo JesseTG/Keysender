@@ -36,6 +36,8 @@ public slots:
   bool keyPress(Qt::Key key, Qt::KeyboardModifiers modifiers=Qt::NoModifier);
   bool keyRelease(Qt::Key key, Qt::KeyboardModifiers modifiers=Qt::NoModifier);
 
+  QSet<Qt::Key> getSupportedKeys() const { return _supportedKeys; }
+
   // To be implemented at a later date
   bool keyShortcutOverride(const QKeyEvent& event);
   bool shortcutEvent(const QShortcutEvent& event);
@@ -44,6 +46,8 @@ public slots:
 private /* members */:
   // This big array only exists because Qt doesn't declare Qt::Key as a Q_ENUM
   static std::array<Qt::Key, 439> QT_KEYS;
+  QSet<Qt::Key> _supportedKeys;
+
 #ifdef Q_OS_LINUX
   _XDisplay* x11;
 #endif
